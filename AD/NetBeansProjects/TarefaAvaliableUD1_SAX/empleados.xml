@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<empleados>
+    <empleado>
+        <dni>53196390N</dni>
+        <nombre>Brais</nombre>
+        <apellido>Diaz</apellido>
+        <salario>5000.0</salario>
+    </empleado>
+</empleados>

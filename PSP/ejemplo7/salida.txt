@@ -1,0 +1,17 @@
+ El volumen de la unidad Z es u-id2da
+ El n£mero de serie del volumen es: 8C90-BA2A
+
+ Directorio de Z:\2_DAM\PSP\ejemplo7
+
+27/10/2023  14:15    <DIR>          .
+27/10/2023  14:15    <DIR>          ..
+27/10/2023  14:15                 0 error.txt
+27/10/2023  14:15    <DIR>          nbproject
+27/10/2023  14:15    <DIR>          build
+27/10/2023  14:15    <DIR>          src
+10/10/2021  23:53                85 manifest.mf
+27/10/2023  14:15               167 salida.txt
+27/10/2023  14:13             3.609 build.xml
+11/10/2021  00:02    <DIR>          test
+               4 archivos          3.861 bytes
+               6 dirs  7.275.453.182.976 bytes libres
