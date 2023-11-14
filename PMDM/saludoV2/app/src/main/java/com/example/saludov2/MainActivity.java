@@ -1,5 +1,6 @@
 package com.example.saludov2;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -25,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private int edad;
     private String generoText = "Sra.";
     private Button btnSaludar;
+    private TextView tvDespedida;
 
+    private static final int LLAMADA_DESPEDIDA = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         rbtOtro = findViewById(R.id.rbtOtro);
         rgGenero = findViewById(R.id.rgGenero);
         btnSaludar = findViewById(R.id.btnSaludar);
+        tvDespedida = findViewById(R.id.tvDespedida);
     }
 
     public void onClickToActivity2(View view) {
@@ -62,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
             try{
                 nombreText = nombre.getText().toString();
                 String edad = comprobarEdad();
-                String genero = comprobarRadio();
+                String genero = generoText;
                 texto = "Hola, " + genero + " " + nombreText + "\n" + edad;
                 Intent intent = new Intent(this, Saludando.class);
                 intent.putExtra("mensaje", texto);
-                startActivity(intent);
+                startActivityForResult(intent, LLAMADA_DESPEDIDA);
             } catch (Exception ex){
                 Toast.makeText(this, "Hay campos sin rellenar", Toast.LENGTH_SHORT).show();
             }
@@ -74,10 +79,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String comprobarRadio() {
-
-        return generoText;
-    }
 
     private String comprobarEdad() {
         anhoInt = Integer.parseInt(anho.getText().toString());
@@ -93,5 +94,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return anhoText;
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Vemos quien nos contesta
+        if (requestCode == LLAMADA_DESPEDIDA){
+            //testeamos el código del resultado
+            if (resultCode == RESULT_OK){
+                //operaciones si la actividad llamada finaliza según lo previsto
+                Toast.makeText(this, "Todo ok", Toast.LENGTH_SHORT).show();
+                tvDespedida.setText(data.getStringExtra("mensaje"));
+
+            } else {
+                //operaciones si la actividad llamada no hace lo previsto
+                Toast.makeText(this, "Algo falló", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

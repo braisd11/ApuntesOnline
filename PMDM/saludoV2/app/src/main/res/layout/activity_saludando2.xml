@@ -27,7 +27,8 @@
             android:id="@+id/rbtAdios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adiós"/>
+            android:text="Adiós"
+            android:checked="true"/>
         <RadioButton
             android:id="@+id/rbtHastaPronto"
             android:layout_width="wrap_content"
@@ -39,5 +40,6 @@
         android:id="@+id/btnFin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finalizar"/>
+        android:text="Finalizar"
+        android:onClick="onClickToActivity1"/>
 </LinearLayout>

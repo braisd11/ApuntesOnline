@@ -3,6 +3,7 @@ package com.example.activities;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -101,12 +102,38 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent();
             intent.setClassName("com.example.ex3_cuentaclick","com.example.ex3_cuentaclick.MainActivity");
 
-            PackageManager pm = getPackageManager();
+
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException a){
+                Toast.makeText(this, "Ninguna actividad puede realizar esta acción", Toast.LENGTH_SHORT).show();
+            }
+
+
+            //Opción con Package Manager
+
+            /* PackageManager pm = getPackageManager();
             List actividadesPosibles = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
             if (actividadesPosibles.size()>0){
                 startActivity(intent);
             } else {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            }*/
+        } else if (view.getId()==R.id.btnLlamadaSystemApp){
+            try {
+                intent = new Intent();
+                intent.setClassName("com.android.calculator2","com.android.calculator2.Calculator");
+                startActivity(intent);
+            } catch (ActivityNotFoundException act){
+                Toast.makeText(this, "No se encontró la calculadora", Toast.LENGTH_SHORT).show();
+            }
+        } else if (view.getId()==R.id.btnLlamadaSystemAppSettings){
+            try {
+                intent = new Intent();
+                intent.setClassName("com.android.settings","com.android.settings.Settings");
+                startActivity(intent);
+            } catch (ActivityNotFoundException act){
+                Toast.makeText(this, "No se encontraron las Settings", Toast.LENGTH_SHORT).show();
             }
         }
 

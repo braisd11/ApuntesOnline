@@ -49,5 +49,11 @@
         android:text="Saludar"
         android:onClick="onClickToActivity2"/>
 
+    <TextView
+        android:id="@+id/tvDespedida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
 
 </LinearLayout>

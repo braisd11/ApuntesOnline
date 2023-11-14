@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,6 +20,7 @@ public class Saludando extends AppCompatActivity {
     private RadioButton rbtAdios, rbtHastaPronto;
     private Button btnFin;
     private TextView txtMensaje;
+    private String despedida= "El usuario no ha contestado";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,22 @@ public class Saludando extends AppCompatActivity {
 
         extracted();
 
-        comprobarChk();
         txtMensaje.setText(texto);
+        comprobarChk();
+        btnFin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.btnFin){
+
+
+                    Intent intent = new Intent();
+                    intent.putExtra("mensaje", despedida);
+                    setResult(RESULT_OK, intent);
+                    Log.i("ciclo","Ejecutando listener() on Activity 5");
+                    finish();
+                }
+            }
+        });
     }
 
     private void comprobarChk() {
@@ -41,6 +57,18 @@ public class Saludando extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (chkDespedida.isChecked()){
                     rgDespedida.setVisibility(View.VISIBLE);
+                    rbtAdios.setChecked(true);
+                    despedida = rbtAdios.getText().toString();
+                    rgDespedida.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+                            if (rbtAdios.isChecked()){
+                                despedida = rbtAdios.getText().toString();
+                            } else if (rbtHastaPronto.isChecked()) {
+                                despedida = rbtHastaPronto.getText().toString();
+                            }
+                        }
+                    });
                 } else {
                     rgDespedida.setVisibility(View.GONE);
                 }
@@ -57,4 +85,6 @@ public class Saludando extends AppCompatActivity {
         btnFin = findViewById(R.id.btnFin);
         chkDespedida = findViewById(R.id.chkDespedida);
     }
+
+
 }
