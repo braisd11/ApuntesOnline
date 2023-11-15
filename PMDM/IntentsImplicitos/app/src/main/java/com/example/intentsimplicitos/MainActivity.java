@@ -2,11 +2,13 @@ package com.example.intentsimplicitos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static final int LLAMADA_TELEFONO = 0;
+    private static final int LLAMADA_TELEFONO2 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +45,58 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_llamar_numero_premarcado:
                 //generar la acción del intent implícito: ACTION_CALL
-                /*intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)345999999"));
-                startActivity(intent);*/
-
 
                 //averiguar si tiene permiso:
+                if (Build.VERSION.SDK_INT >= 23){
 
-                if (checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+                    if (checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+
+                        //realizar la llamada
+                        intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)685749875"));
+                        startActivity(intent);
+
+                    } else { //solicitamos al SO la gestión del permiso
+
+                        requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONO);
+
+                    }
+
+                } else {//En APIs anteriores a la 23
+
+                    //Realizar la acción correspondiente
+                    intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)685749875"));
+                    startActivity(intent);
+
+                }
+                break;
+
+            case R.id.btn_llamar_numero_premarcado2:
+
+                //Versión con una librería de compatibilidad como es AppActivityCompact
+
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+
                     //realizar la llamada
                     intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)685749875"));
                     startActivity(intent);
+
                 } else { //solicitamos al SO la gestión del permiso
-                    requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONO);
+
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONO2);
 
                 }
 
                 break;
+
+            case R.id.btn_carga_URL:
+
+                //Carga una URL
+
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.edu.xunta.gal"));
+                startActivity(intent);
+
+                break;
+
             default:
                 Toast.makeText(this, "Error al ejecutar", Toast.LENGTH_SHORT).show();
         }
