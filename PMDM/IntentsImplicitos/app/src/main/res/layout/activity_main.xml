@@ -52,6 +52,13 @@
         android:text="Cargar URL"
         android:onClick="onClickBtn"/>
 
+    <Button
+        android:id="@+id/btn_maps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Abrir maps"
+        android:onClick="onClickBtn"/>
+
 
 
 </LinearLayout>

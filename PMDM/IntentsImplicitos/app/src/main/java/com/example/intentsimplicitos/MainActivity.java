@@ -92,8 +92,35 @@ public class MainActivity extends AppCompatActivity {
 
                 //Carga una URL
 
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.edu.xunta.gal"));
-                startActivity(intent);
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.xunta.gal"));
+
+                if (intent.resolveActivity(getPackageManager()) != null){
+
+                    startActivity(intent);
+
+                } else {//irresoluble
+
+                    Toast.makeText(this, "Esta acción no se puede realizar", Toast.LENGTH_SHORT).show();
+
+                }
+
+                break;
+
+            case R.id.btn_maps:
+                //Abrir el maps
+
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:42.25,-8.68"));
+                intent.setPackage("com.google.android.apps.map");
+
+                if (intent.resolveActivity(getPackageManager()) != null){
+
+                    startActivity(intent);
+
+                } else {//irresoluble
+
+                    Toast.makeText(this, "Esta acción no se puede realizar", Toast.LENGTH_SHORT).show();
+
+                }
 
                 break;
 
