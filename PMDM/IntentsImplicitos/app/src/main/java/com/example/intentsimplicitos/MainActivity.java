@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                     } else { //solicitamos al SO la gestión del permiso
 
+                        //Solicitud de permiso generada por el SO
                         requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONO);
 
                     }
