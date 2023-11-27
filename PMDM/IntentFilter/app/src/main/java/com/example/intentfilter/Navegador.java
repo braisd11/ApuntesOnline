@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class Navegador extends AppCompatActivity {
@@ -16,6 +17,10 @@ public class Navegador extends AppCompatActivity {
         setContentView(R.layout.activity_navegador);
 
         extracted();
+
+        WebSettings ws = wbUrl.getSettings();
+        ws.setJavaScriptEnabled(true);
+
         cargarURL();
     }
 
