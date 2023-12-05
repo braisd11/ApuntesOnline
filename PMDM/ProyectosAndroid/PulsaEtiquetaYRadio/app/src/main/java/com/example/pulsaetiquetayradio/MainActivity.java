@@ -1,5 +1,6 @@
 package com.example.pulsaetiquetayradio;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null){
+
+            savedInstanceState.getInt("posicion", posicion);
+            savedInstanceState.getInt("rotation", rotation);
+
+        }
         setContentView(R.layout.activity_main);
         this.label = findViewById(R.id.label);
         this.rbtView = findViewById(R.id.rbtView);
@@ -66,5 +73,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("posicion", posicion);
+        outState.putInt("rotation", rotation);
+
+
     }
 }
