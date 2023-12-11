@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 blue = bluebar.getProgress();
                 alpha = alphabar.getProgress();
 
-                String rgbShow = red + "/" + green + "/" + blue + "/" + alpha;
+                String rgbShow = "Red: " + red + " / Green: " + green + " / Blue: " + blue + " / Alpha: " + alpha;
 
                 valueText.setText(rgbShow);
                 changeColor(red,green,blue,alpha);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         blue = bluebar.getProgress();
         alpha = alphabar.getProgress();
 
-        String rgbShow = red + "/" + green + "/" + blue + "/" + alpha;
+        String rgbShow = "Red: " + red + " / Green: " + green + " / Blue: " + blue + " / Alpha: " + alpha;
 
         valueText.setText(rgbShow);
 
