@@ -10,32 +10,38 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SeekBar redsb, greensb, bluesb, alphasb;
+    private SeekBar redbar, greenbar, bluebar, alphabar;
 
     private int red, green , blue, alpha;
 
-    private TextView redtxt, greentxt, bluetxt, alphatxt, fondo;
+    private TextView valueText, fondo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        redsb = findViewById(R.id.redsb);
-        greensb = findViewById(R.id.greensb);
-        bluesb = findViewById(R.id.bluesb);
-        alphasb = findViewById(R.id.alphasb);
+        redbar = findViewById(R.id.redbar);
+        greenbar = findViewById(R.id.greenbar);
+        bluebar = findViewById(R.id.bluebar);
+        alphabar = findViewById(R.id.alphabar);
 
-        redtxt = findViewById(R.id.redtxt);
-        greentxt = findViewById(R.id.greentxt);
-        bluetxt = findViewById(R.id.bluetxt);
-        alphatxt = findViewById(R.id.alphatxt);
+        valueText = findViewById(R.id.valueText);
         fondo = findViewById(R.id.fondo);
 
-        redsb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBar.OnSeekBarChangeListener changeListener = new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                red = progress;
+
+                red = redbar.getProgress();
+                green = greenbar.getProgress();
+                blue = bluebar.getProgress();
+                alpha = alphabar.getProgress();
+
+                String rgbShow = red + "/" + green + "/" + blue + "/" + alpha;
+
+                valueText.setText(rgbShow);
+                changeColor(red,green,blue,alpha);
 
             }
 
@@ -46,66 +52,27 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                redtxt.setText("Red: " + red + " //");
-                changeColor(red,green,blue,alpha);
-            }
-        });
-
-        greensb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                green = progress;
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                greentxt.setText("Green: " + green + " //");
-                changeColor(red,green,blue,alpha);
-            }
-        });
+        };
 
-        bluesb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                blue = progress;
-            }
+        //Assign listeners
+        this.redbar.setOnSeekBarChangeListener(changeListener);
+        this.greenbar.setOnSeekBarChangeListener(changeListener);
+        this.bluebar.setOnSeekBarChangeListener(changeListener);
+        this.alphabar.setOnSeekBarChangeListener(changeListener);
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+        red = redbar.getProgress();
+        green = greenbar.getProgress();
+        blue = bluebar.getProgress();
+        alpha = alphabar.getProgress();
 
-            }
+        String rgbShow = red + "/" + green + "/" + blue + "/" + alpha;
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                bluetxt.setText("Blue: " + blue + " //");
-                changeColor(red,green,blue,alpha);
-            }
-        });
+        valueText.setText(rgbShow);
 
-        alphasb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                alpha = progress;
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                alphatxt.setText("Alpha: " + alpha + " //");
-                changeColor(red,green,blue,alpha);
-            }
-        });
-
-
+        changeColor(red,green,blue,alpha);
     }
 
 
