@@ -11,13 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="17f7dd0d-dd83-4099-8b12-526c4dd3920e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../../AD/NetBeansProjects/TarefaAvaliableUD1" beforeDir="false" afterPath="$PROJECT_DIR$/../../AD/NetBeansProjects/TarefaAvaliableUD1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\a22braisdr\.android\avd\Pixel_3a_API_23.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\a22braisdr\.android\avd\3.4_WQVGA_API_23.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -37,7 +38,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "E:/a22braisdr/PMDM/RGBExercise"
+    "last_opened_file_path": "E:/a22braisdr/PMDM/ProyectosAndroid/EventosListener1"
   }
 }]]></component>
   <component name="RunManager">
