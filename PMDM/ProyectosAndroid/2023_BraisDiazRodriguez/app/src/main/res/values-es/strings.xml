@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2023_BraisDiazRodriguez</string>
+    <string name="imc">IMC</string>
+    <string name="calculate_imc">Calcular IMC</string>
+    <string name="more_information">Más Informacion</string>
+</resources>
