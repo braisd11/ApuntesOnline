@@ -1,0 +1,92 @@
+1.- Que es el contexto de un proceso y que es el cambio de contexto?
+
+El contexto de un proceso es su entorno de ejecución, que abarca recursos, 
+estado del sistema y variables del entorno.
+y el cambio de contexto es el tiempo perdido
+
+2.- Que es el cuanto de ejecución? A que tipo de política de planificación pertenece?
+
+El "cuanto de ejecución" es el tiempo real que toma realizar una tarea en un proyecto, 
+comparado con el tiempo planeado inicialmente. politica corto plazo
+
+3.- Espacio de memoria
+
+
+
+4.- En un ordenador multinúcleo todos los procesos funcionan a la vez? (tipo test)
+
+
+No, no todos los procesos funcionan exactamente al mismo tiempo en un ordenador 
+multinúcleo. Aunque pueden ejecutarse concurrentemente, el sistema operativo 
+gestiona y alterna rápidamente entre ellos, dando la ilusión de funcionamiento 
+simultáneo.
+
+5.- Cúal es el estado anterior a ejecución?
+
+estado listo
+
+6.- Que es la multiprogramacion?
+
+Ejecucion concurrente de todos los procesos
+
+7-
+
+
+8-
+
+
+9-
+
+
+10-
+
+
+11-
+
+
+12-
+
+
+
+
+PARTE DOS:
+
+DEFINE MÉTODOS, DE QUE CLASE DESCIENDEN Y LO QUE DEVUELVEN:
+
+start()
+
+getInputStream()
+
+getOutputStream()
+
+waitFor()
+
+
+CORREGIR CÓDIGO:
+
+- ProcessBuilder aleatorios = new ProcessBuilder(args[0]).start(); -> (Process aleatorios = new ProcessBuilder(args[0]).start();)
+
+- BufferedReader brA = new BufferedReader(new InputStreamReader(aleatorios.getOutputStream())); -> (Pone .getOutputStream() pero es .getInputStream())
+
+- PrintStream psA = new PrintStream(aleatorios.getInputStream()); -> (Pone .getInputStream() pero es .getOutputStream())
+
+- Los BufferedReader estaban al revés dentro del while en el .readLine()
+
+
+COMPLETAR CÓDIGO:
+
+- Completar los getInputStream() y getOutputStream()
+
+		BufferedReader brA = new BufferedReader(new InputStreamReader(aleatorios._________) 	-> (.getInputStream())
+
+		PrintStream psA = new PrintStream(aleatorios._________);				-> (.getOutputStream())
+
+- Completar:
+		ProcessBuilder pb= new ProcessBuilder(args[0]);
+		Process aleatorios = _______.start();           					-> (pb)
+
+- Completar los BufferedReader() en el .readLine()
+
+		while ((line = ______.readLine())							-> (in)
+		
+		line = _______.readLine();								-> (br)
